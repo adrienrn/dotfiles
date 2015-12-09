@@ -16,6 +16,7 @@ Curated list of famous dotfiles repository.
 - https://github.com/paulirish/dotfiles
 - https://github.com/thoughtbot/dotfiles
 - https://github.com/webpro/dotfiles
+- https://github.com/necolas/dotfiles
 
 ## Some more
 
