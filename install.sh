@@ -7,7 +7,7 @@ DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 date_suffix=$(date +_%F-%T-%N)
 
 # Make symlink for a bunch of files.
-for file in "$DOTFILES_DIR"/.{bash_profile,dummy}; do
+for file in "$DOTFILES_DIR"/.{bash_profile,inputrc}; do
     # Get the filename from path
     target=$(basename $file)
 
