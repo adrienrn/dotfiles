@@ -102,7 +102,7 @@ if [[ "${SSH_TTY}" ]]; then
 else
     hostStyle="${yellow}";
 fi;
-echo hello ?
+
 # Set the terminal title to the current working directory.
 PS1="\[\033]0;\w\007\]";
 PS1+="\[${bold}\]\n"; # newline
