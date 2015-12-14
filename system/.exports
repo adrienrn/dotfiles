@@ -33,3 +33,17 @@ shopt -s checkwinsize
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US"
 
+#
+# BASH-IT
+# https://github.com/bash-it/bash-it
+#
+
+# Path to bash-it
+export BASH_IT="$DOTFILES_DIR/bash-it"
+
+# Lock and Load a custom theme file
+# location /.bash_it/themes/
+export BASH_IT_THEME='cupcake'
+
+# Set this to false to turn off version control status checking within the prompt for all themes
+export SCM_CHECK=true
