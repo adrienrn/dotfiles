@@ -33,6 +33,9 @@ shopt -s checkwinsize
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US"
 
+# Timezone data
+export TZ='Europe/Paris'
+
 #
 # BASH-IT
 # https://github.com/bash-it/bash-it
