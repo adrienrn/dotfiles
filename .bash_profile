@@ -31,6 +31,9 @@ for file in "$DOTFILES_DIR"/system/.{path,bash_prompt,exports,aliases,functions,
 done;
 unset file;
 
+# Set LSCOLORS
+eval "$(dircolors "$DOTFILES_DIR"/system/.dircolors)"
+
 # Enable bash-it
 source "$BASH_IT/bash_it.sh"
 
