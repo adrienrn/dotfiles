@@ -1,3 +1,6 @@
 [user]
 	name = Hussard
 	email = adrien.ricartnoblet@gmail.com
+
+[alias]
+	st = status -sb
