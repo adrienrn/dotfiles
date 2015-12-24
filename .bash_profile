@@ -36,6 +36,15 @@ eval "$(dircolors "$DOTFILES_DIR"/system/.dircolors)"
 
 # Enable bash-it
 source "$BASH_IT/bash_it.sh"
+if [ "$(bash-it show plugins | grep -E 'fasd.*\[x\]')" == "" ]; then
+    bash-it enable plugin fasd;
+fi
+if [ "$(bash-it show completions | grep -E 'git.*\[x\]')" == "" ]; then
+    bash-it enable completion git;
+fi
+if [ "$(bash-it show aliases | grep -E 'git.*\[x\]')" == "" ]; then
+    bash-it enable alias git;
+fi
 
 # Clean up
 unset READLINK CURRENT_SCRIPT SCRIPT_PATH DOTFILE
