@@ -51,6 +51,11 @@ export BASH_IT_THEME='cupcake'
 # Set this to false to turn off version control status checking within the prompt for all themes
 export SCM_CHECK=true
 
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
 #
 # RUBY
 #
