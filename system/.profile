@@ -20,6 +20,3 @@ fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
-
-# Set the proper timezont for DST (daylight saving time)
-export TZ=Europe/Paris
