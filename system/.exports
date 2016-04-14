@@ -50,3 +50,11 @@ export BASH_IT_THEME='cupcake'
 
 # Set this to false to turn off version control status checking within the prompt for all themes
 export SCM_CHECK=true
+
+#
+# RUBY
+#
+
+if [ -d $HOME/.rvm/bin ]; then
+   export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+fi
