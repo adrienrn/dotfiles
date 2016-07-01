@@ -5,6 +5,14 @@ if [ -d "$HOME/bin" ] ; then
 fi
 
 #
+# COMPOSER
+#
+
+if [ -d "$HOME/.composer/vendor/bin" ]; then
+   export PATH="$PATH:$HOME/.composer/vendor/bin" # Add RVM to PATH for scripting
+fi
+
+#
 # RUBY
 #
 
