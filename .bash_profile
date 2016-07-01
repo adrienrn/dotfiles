@@ -48,3 +48,5 @@ fi
 
 # Clean up
 unset READLINK CURRENT_SCRIPT SCRIPT_PATH DOTFILE
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
