@@ -12,7 +12,7 @@ if [ ! -d "$DOTFILES_DIR/bash-it" ]; then
 fi
 
 # Make symlink for a bunch of files.
-for file in $(find $DOTFILES_DIR -type f -name .bash_profile -o -name .bashrc -o -name .inputrc -o -name .gitconfig -o -name .emacs); do
+for file in $(find $DOTFILES_DIR -name bash_profile -o -name bashrc -o -name inputrc -o -name gitconfig -o -name emacs -type f); do
     
     # Get the filename from path
     target=$(basename $file)
@@ -23,6 +23,6 @@ for file in $(find $DOTFILES_DIR -type f -name .bash_profile -o -name .bashrc -o
     fi
 
     # Makes the symlink to dotfile.
-    ln -sfv $file ~
+    ln -sfv $file ~/.$target
 done
 
