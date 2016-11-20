@@ -28,17 +28,18 @@ done
 
 # Handle symlinks for Sublime Text 3
 SUBLIME_USERDIR="$HOME/Library/Application Support/Sublime Text 3/Packages/User"
-if [ $(uname) == "Darwin" ] && [ -d "$SUBLIME_USER_DIR" ]; then
-    for file in $(find "$DOTFILES_DIR/sublime"); do
+if [ $(uname) == "Darwin" ] && [ -d "$SUBLIME_USERDIR" ]; then
+    for file in $(find "$DOTFILES_DIR/sublime" -type f); do
 	# Get the filename from path
 	target=$(basename $file)
 
-	if [ -f ~/$target ] && [ ! -L ~/$target ]; then
+	targetFile="$SUBLIME_USERDIR/$target"
+	if [ -f "$targetFile" ] && [ ! -L "$targetFile" ]; then
 	    # Backup the existing file before linking.
-	    mv $SUBLIME_USERDIR/$target $SUBLIME_USERDIR/$target$date_suffix
+	    mv "$targetFile" "$targetFile$date_suffix"
 	fi
 
 	# Makes the symlink to dotfile.
-	ln -sfv $file $SUBLIME_USERDIR/$target
+	ln -sfv $file "$targetFile"
     done
 fi
