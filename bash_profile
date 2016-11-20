@@ -36,7 +36,12 @@ done;
 unset file;
 
 # Set LSCOLORS
-eval "$(dircolors "$DOTFILES_DIR"/system/dircolors)"
+if [ "$(which dircolors)" != "" ]; then
+    eval "$(dircolors "$DOTFILES_DIR"/system/dircolors)"
+else
+    # System has no dircolors, probably MacOs or freebsd
+    : # No-op, do nothing
+fi
 
 # Enable bash-it
 source "$BASH_IT/bash_it.sh"
