@@ -1,0 +1,21 @@
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+#
+# COMPOSER
+#
+
+if [ -d "$HOME/.composer/vendor/bin" ]; then
+   export PATH="$PATH:$HOME/.composer/vendor/bin" # Add RVM to PATH for scripting
+fi
+
+#
+# RUBY
+#
+
+if [ -d $HOME/.rvm/bin ]; then
+   export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+fi
