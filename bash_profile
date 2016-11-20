@@ -3,13 +3,13 @@
 [ -z "$PS1" ] && return
 
 #
-# Load static configuration
-# Non-commited configuration per machine to set global options and turn ON/OFF features
+# Local dotfile for machine specific options
+# https://github.com/necolas/dotfiles
 #
 
-if [ -f "$HOME/.extra" ]; then
+if [ -f "$HOME/.dotfiles.local" ]; then
     # Non-commited configuration, @TODO rename that.
-    source "$HOME/.extra";
+    source "$HOME/.dotfiles.local";
 fi
 
 #
