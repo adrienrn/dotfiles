@@ -10,7 +10,11 @@ READLINK=$(which greadlink || which readlink)
 CURRENT_SCRIPT=$BASH_SOURCE
 
 if [[ -n $CURRENT_SCRIPT && -x "$READLINK" ]]; then
-    SCRIPT_PATH=$($READLINK -f "$CURRENT_SCRIPT")
+    SCRIPT_PATH=$($READLINK -f "$CURRENT_SCRIPT" 2>/dev/null)
+    if [ "$?" != 0 ]; then
+       # System does not support -f option, probably MacOs
+       SCRIPT_PATH=$(cd "$(dirname "$CURRENT_SCRIPT")" && pwd -P)
+    fi 
     DOTFILES_DIR=$(dirname "$SCRIPT_PATH")
 elif [ -d "$HOME/.dotfiles" ]; then
     DOTFILES_DIR="$HOME/.dotfiles"
