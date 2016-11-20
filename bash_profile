@@ -1,26 +1,40 @@
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
+
+#
+# Load static configuration
+# Non-commited configuration per machine to set global options and turn ON/OFF features
+#
+
+if [ -f "$HOME/.extra" ]; then
+    # Non-commited configuration, @TODO rename that.
+    source "$HOME/.extra";
+fi
 
 #
 # Locate dotfiles.
 # @see https://github.com/webpro/dotfiles
 #
 
-READLINK=$(which greadlink || which readlink)
-CURRENT_SCRIPT=$BASH_SOURCE
+if [ "$DOTFILES_DIR" == "" ] || [ ! -d "$DOTFILES_DIR" ]; then
+    READLINK=$(which greadlink || which readlink)
+    CURRENT_SCRIPT=$BASH_SOURCE
 
-if [[ -n $CURRENT_SCRIPT && -x "$READLINK" ]]; then
-    SCRIPT_PATH=$($READLINK -f "$CURRENT_SCRIPT" 2>/dev/null)
-    if [ "$?" != 0 ]; then
-       # System does not support -f option, probably MacOs
-       SCRIPT_PATH=$(cd "$(dirname "$CURRENT_SCRIPT")" && pwd -P)
-    fi 
-    DOTFILES_DIR=$(dirname "$SCRIPT_PATH")
-elif [ -d "$HOME/.dotfiles" ]; then
-    DOTFILES_DIR="$HOME/.dotfiles"
-else
-    echo "Unable to find dotfiles, exiting."
-    return # `exit 1` would quit the shell itself
+    if [ $(uname) != "Darwin" ] && [[ -n $CURRENT_SCRIPT && -x "$READLINK" ]]; then
+	SCRIPT_PATH=$($READLINK -f "$CURRENT_SCRIPT" 2>/dev/null)
+	if [ "$?" != 0 ]; then
+	    # System does not support -f option, probably MacOs
+	    echo "System does not support -f option, set DOTFILES_DIR environement variable manually."
+	    return # `exit 1` would quit the shell itself
+	fi 
+	DOTFILES_DIR=$(dirname "$SCRIPT_PATH")
+    elif [ -d "$HOME/.dotfiles" ]; then
+	DOTFILES_DIR="$HOME/.dotfiles"
+    else
+	echo "Unable to find dotfiles, exiting."
+	return # `exit 1` would quit the shell itself
+    fi
 fi
 
 #
@@ -30,7 +44,7 @@ fi
 
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
-for file in "$DOTFILES_DIR"/system/{path,bash_prompt,exports,aliases,functions,extra}; do
+for file in "$DOTFILES_DIR"/system/{path,bash_prompt,exports,aliases,functions}; do
     [ -r "$file" ] && [ -f "$file" ] && source $file;
 done;
 unset file;

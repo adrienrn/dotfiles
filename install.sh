@@ -23,7 +23,7 @@ for file in $(find $DOTFILES_DIR -name bash_profile -o -name bashrc -o -name inp
     fi
 
     # Makes the symlink to dotfile.
-    ln -sfv $file ~/.$target    
+    ln -sfv "$file" ~/.$target    
 done
 
 # Handle symlinks for Sublime Text 3
