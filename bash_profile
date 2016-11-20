@@ -26,13 +26,13 @@ fi
 
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
-for file in "$DOTFILES_DIR"/system/.{path,bash_prompt,exports,aliases,functions,extra}; do
-    [ -r "$file" ] && [ -f "$file" ] && source "$file";
+for file in "$DOTFILES_DIR"/system/{path,bash_prompt,exports,aliases,functions,extra}; do
+    [ -r "$file" ] && [ -f "$file" ] && source $file;
 done;
 unset file;
 
 # Set LSCOLORS
-eval "$(dircolors "$DOTFILES_DIR"/system/.dircolors)"
+eval "$(dircolors "$DOTFILES_DIR"/system/dircolors)"
 
 # Enable bash-it
 source "$BASH_IT/bash_it.sh"
