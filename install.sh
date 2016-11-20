@@ -40,6 +40,6 @@ if [ $(uname) == "Darwin" ] && [ -d "$SUBLIME_USERDIR" ]; then
 	fi
 
 	# Makes the symlink to dotfile.
-	ln -sfv $file "$targetFile"
+	ln -sfv "$file" "$targetFile"
     done
 fi
