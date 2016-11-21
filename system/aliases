@@ -6,9 +6,7 @@ alias ll='ls -al'
 alias la='ls -A'
 alias l='ls -C'
 
-#
 # Enable color support of ls and also add handy aliases.
-#
 if [ -x /usr/bin/dircolors ]; then
     # GNU systems
     alias ls='ls --color=auto'
@@ -21,3 +19,8 @@ elif [ "$(uname)" == "Darwin" ]; then
     alias ls='ls -GFh'
 fi
 
+#
+# vagrant
+#
+alias vagup='vagrant up --provider=parallels' # @TODO provider variable?
+alias vaggo='vagrant ssh'
