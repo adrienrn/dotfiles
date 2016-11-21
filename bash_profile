@@ -38,18 +38,20 @@ if [ "$DOTFILES_DIR" == "" ] || [ ! -d "$DOTFILES_DIR" ]; then
 fi
 
 #
-# Load the shell dotfiles.
-# @see https://github.com/webpro/dotfiles
+# LOAD SYSTEM DOTFILES
+# Use ~/.dotfiles.local can be used for other settings you don’t want to commit.
 #
 
-# * ~/.path can be used to extend `$PATH`.
-# * ~/.extra can be used for other settings you don’t want to commit.
 for file in "$DOTFILES_DIR"/system/{path,bash_prompt,exports,aliases,functions}; do
     [ -r "$file" ] && [ -f "$file" ] && source $file;
 done;
 unset file;
 
-# Set LSCOLORS
+#
+# LSCOLORS
+# * Only if system has dircolors installed.
+#
+
 if [ "$(which dircolors)" != "" ]; then
     eval "$(dircolors "$DOTFILES_DIR"/system/dircolors)"
 else
@@ -57,19 +59,29 @@ else
     : # No-op, do nothing
 fi
 
-# Enable bash-it
-source "$BASH_IT/bash_it.sh"
-if [ "$(bash-it show plugins | grep -E 'fasd.*\[x\]')" == "" ]; then
-    bash-it enable plugin fasd;
-fi
-if [ "$(bash-it show completions | grep -E 'git.*\[x\]')" == "" ]; then
-    bash-it enable completion git;
-fi
-if [ "$(bash-it show aliases | grep -E 'git.*\[x\]')" == "" ]; then
-    bash-it enable alias git;
+#
+# BASH-IT
+# Use ~/.dotfiles.local to enable bash-it or not.
+#
+
+if [ "$DOTFILES_BASHIT_ENABLED" == "" ] || [ "$DOTFILES_BASHIT_ENABLED" == "true" ]; then
+    # Enable bash-it.sh
+    source "$BASH_IT/bash_it.sh"
+
+    if [ "$(bash-it show completions | grep -E 'git.*\[x\]')" == "" ]; then
+	bash-it enable completion git;
+    fi
+
+    if [ "$(bash-it show aliases | grep -E 'git.*\[x\]')" == "" ]; then
+	bash-it enable alias git;
+    fi
+
+    if [ "$(which fasd)" != "" ] && [ "$(bash-it show plugins | grep -E 'fasd.*\[x\]')" == "" ]; then
+	bash-it enable plugin fasd;
+    fi
 fi
 
 # Clean up
-unset READLINK CURRENT_SCRIPT SCRIPT_PATH DOTFILE
+unset READLINK CURRENT_SCRIPT SCRIPT_PATH DOTFILES_DIR
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
