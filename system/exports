@@ -46,7 +46,7 @@ export BASH_IT="$DOTFILES_DIR/bash-it"
 
 # Lock and Load a custom theme file
 # location /.bash_it/themes/
-export BASH_IT_THEME='cupcake'
+#export BASH_IT_THEME='cupcake'
 
 # Set this to false to turn off version control status checking within the prompt for all themes
-export SCM_CHECK=true
+#export SCM_CHECK=true
