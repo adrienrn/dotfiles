@@ -24,3 +24,9 @@ fi
 #
 alias vagup='vagrant up --provider=parallels' # @TODO provider variable?
 alias vaggo='vagrant ssh'
+
+#
+# git
+#
+alias got='git'
+alias gut='git'
