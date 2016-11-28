@@ -24,6 +24,7 @@ fi
 #
 alias vagup='vagrant up --provider=parallels' # @TODO provider variable?
 alias vaggo='vagrant ssh'
+alias vagre='vagrant reload'
 
 #
 # git
