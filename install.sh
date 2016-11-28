@@ -25,6 +25,20 @@ for file in $(find $DOTFILES_DIR -name bash_profile -o -name bashrc -o -name inp
     # Makes the symlink to dotfile.
     ln -sfv "$file" ~/.$target    
 done
+unset target
+
+# Make symlink for Vagrant.
+if [ ! -d "$HOME/.vagrant.d" ]; then
+    mkdir "$HOME/.vagrant.d"
+fi
+
+target="$HOME/.vagrant.d/Vagrantfile"
+if [ -f $target ] && [ ! -L $target ]; then
+    # Backup the existing file before linking.
+    mv $target $target$date_suffix
+fi
+ln -sfv "$DOTFILES_DIR/vagrant/Vagrantfile" $target
+unset target
 
 # Handle symlinks for Sublime Text 3
 SUBLIME_USERDIR="$HOME/Library/Application Support/Sublime Text 3/Packages/User"
@@ -43,3 +57,4 @@ if [ $(uname) == "Darwin" ] && [ -d "$SUBLIME_USERDIR" ]; then
 	ln -sfv "$file" "$targetFile"
     done
 fi
+unset target targetFile

@@ -1,0 +1,25 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+#
+# Global Vagrantfile.
+#
+# Used to set default configuration for vagrant boxes per host. This file
+# is loaded before any Vagrantfile on this host and will be overriden by
+# any project-specific file.
+# 
+# @see https://www.vagrantup.com/docs/vagrantfile/#load-order
+#
+
+Vagrant.configure(2) do |config|
+  
+  # 
+  # Provider-specific config.
+  #
+  
+  config.vm.provider :parallels do |parallels,override|
+    # synced_folder works well in Parallels, mount it for every box by default
+    override.vm.synced_folder ".", "/vagrant", disabled: false
+  end
+
+end
