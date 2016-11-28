@@ -76,6 +76,10 @@ if [ "$DOTFILES_BASHIT_ENABLED" == "" ] || [ "$DOTFILES_BASHIT_ENABLED" == "true
 	bash-it enable alias git;
     fi
 
+    if [ "$(bash-it show plugins | grep -E 'rvm.*\[x\]')" == "" ]; then
+	bash-it enable plugin rvm;
+    fi
+
     if [ "$(which fasd)" != "" ] && [ "$(bash-it show plugins | grep -E 'fasd.*\[x\]')" == "" ]; then
 	bash-it enable plugin fasd;
     fi
@@ -83,5 +87,3 @@ fi
 
 # Clean up
 unset READLINK CURRENT_SCRIPT SCRIPT_PATH DOTFILES_DIR
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
