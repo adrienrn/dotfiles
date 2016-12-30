@@ -80,6 +80,10 @@ if [ "$DOTFILES_BASHIT_ENABLED" == "" ] || [ "$DOTFILES_BASHIT_ENABLED" == "true
 	bash-it enable plugin rvm;
     fi
 
+    if [ "$(bash-it show plugins | grep -E 'nvm.*\[x\]')" == "" ]; then
+        bash-it enable plugin nvm;
+    fi
+
     if [ "$(which fasd)" != "" ] && [ "$(bash-it show plugins | grep -E 'fasd.*\[x\]')" == "" ]; then
 	bash-it enable plugin fasd;
     fi
