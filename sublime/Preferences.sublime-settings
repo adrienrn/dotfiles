@@ -2,7 +2,7 @@
 	"atomic_save": false,
 	"bold_folder_labels": true,
 	"close_windows_when_empty": false,
-	"color_scheme": "Packages/ayu/ayu-dark.tmTheme",
+	"color_scheme": "Packages/Theme - Cobalt2/cobalt2.tmTheme",
 	"ensure_newline_at_eof_on_save": true,
 	"file_exclude_patterns":
 	[
@@ -52,8 +52,8 @@
 	],
 	"show_definitions": false,
 	"show_full_path": true,
-	"skin": "User/Ayu",
-	"theme": "ayu-dark.sublime-theme",
+	"skin": "User/Ayu/Cobalt2",
+	"theme": "ayu-mirage.sublime-theme",
 	"theme_accent_tangerine": true,
 	"theme_autocomplete_item_selected_colored": true,
 	"theme_bar_margin_top_sm": true,
