@@ -7,11 +7,6 @@
 # https://github.com/necolas/dotfiles
 #
 
-if [ -f "$HOME/.dotfiles.local" ]; then
-    # Non-commited configuration, @TODO rename that.
-    source "$HOME/.dotfiles.local";
-fi
-
 #
 # Locate dotfiles.
 # @see https://github.com/webpro/dotfiles
@@ -46,6 +41,11 @@ for file in "$DOTFILES_DIR"/system/{path,bash_prompt,exports,aliases,functions};
     [ -r "$file" ] && [ -f "$file" ] && source $file;
 done;
 unset file;
+
+if [ -f "$HOME/.dotfiles.local" ]; then
+    # Non-commited configuration, @TODO rename that.
+    source "$HOME/.dotfiles.local";
+fi
 
 #
 # LSCOLORS
