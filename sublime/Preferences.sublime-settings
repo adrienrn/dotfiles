@@ -78,5 +78,6 @@
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true,
 	"ui_font_size_small": true,
+	"ui_font_roboto_mono": true,
 	"ui_separator": true
 }
